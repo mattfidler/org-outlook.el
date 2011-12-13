@@ -5,10 +5,10 @@
 ;; Author: Matthew L. Fidler
 ;; Maintainer: 
 ;; Created: Mon May 10 09:44:59 2010 (-0500)
-;; Version: 0.2
-;; Last-Updated: Fri Dec  9 12:05:54 2011 (-0600)
+;; Version: 0.3
+;; Last-Updated: Tue Dec 13 08:41:29 2011 (-0600)
 ;;           By: Matthew L. Fidler
-;;     Update #: 154
+;;     Update #: 156
 ;; URL: 
 ;; Keywords: 
 ;; Compatibility:    
@@ -25,6 +25,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 ;;; Change log:
+;; 13-Dec-2011    Matthew L. Fidler  
+;;    Last-Updated: Tue Dec 13 08:41:10 2011 (-0600) #155 (Matthew L. Fidler)
+;;    Added more autoload cookies.
 ;; 08-Apr-2011      
 ;;    Last-Updated: Fri Apr  8 08:49:38 2011 (-0500) #151 (US041375)
 ;;    Added some autoload cookies.
@@ -93,7 +96,7 @@
       (shell-command (concat "\"" org-outlook-location "\" /select \"outlook:" id "\"&"))
     (w32-shell-execute "open" (concat "outlook:" id))))
 
-
+;;;###autoload
 (org-add-link-type "outlook" 'org-outlook-open)
 
 ;;;###autoload
@@ -292,6 +295,7 @@ CAPTURE-FUNC is either the symbol `org-remember' or `org-capture'."
     (raise-frame)
     (funcall capture-func nil template)))
 
+;;;###autoload
 (add-to-list 'org-protocol-protocol-alist
              '("outlook" :protocol "outlook"
                :function org-protocol-outlook :kill-client t))

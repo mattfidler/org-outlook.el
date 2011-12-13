@@ -7,11 +7,8 @@ to integrate org-mode with outlook since your company forces you to
 use Microsoft Outlook.  [[file:org-outlook.el][org-outlook.el]] allows: 
 - Creating Tasks from outlook items:
   - org-outlook-task. All selected items in outlook will be added to a
-    task-list at current point. Requires [[file:org-outlook.vbs][org-outlook.vbs]]
-
-- Create Link from outlook items:
-  - org-outlook-copy. Single selected item in outlook will be added to
-    org-file at current point. Requires guid.vbs  
+    task-list at current point. This version requires org-protocol and   
+    [[file:org-protocol.vbs][org-protocol.vbs]]
 
 - Open Outlook Links in org-mode
 
