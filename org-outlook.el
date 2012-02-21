@@ -25,6 +25,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 ;;; Change log:
+;; 21-Feb-2012      
+;;    Last-Updated: Tue Dec 13 08:41:29 2011 (-0600) #156 (Matthew L. Fidler)
+;;    Bug fix.
 ;; 13-Dec-2011    Matthew L. Fidler  
 ;;    Last-Updated: Tue Dec 13 08:41:10 2011 (-0600) #155 (Matthew L. Fidler)
 ;;    Added more autoload cookies.
@@ -296,9 +299,12 @@ CAPTURE-FUNC is either the symbol `org-remember' or `org-capture'."
     (funcall capture-func nil template)))
 
 ;;;###autoload
-(add-to-list 'org-protocol-protocol-alist
-             '("outlook" :protocol "outlook"
-               :function org-protocol-outlook :kill-client t))
+(progn
+  (if (not (boundp 'org-protocol-protocol-alist))
+      (setq org-protocol-protocol-alist nil))
+  (add-to-list 'org-protocol-protocol-alist
+               '("outlook" :protocol "outlook"
+                 :function org-protocol-outlook :kill-client t)))
 
 (provide 'org-outlook)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
