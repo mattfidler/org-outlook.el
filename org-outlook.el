@@ -3,12 +3,12 @@
 ;; Filename: org-outlook.el
 ;; Description: 
 ;; Author: Matthew L. Fidler
-;; Maintainer: 
+;; Maintainer:
 ;; Created: Mon May 10 09:44:59 2010 (-0500)
 ;; Version: 0.3
-;; Last-Updated: Tue Dec 13 08:41:29 2011 (-0600)
+;; Last-Updated: Tue Feb 21 11:15:31 2012 (-0600)
 ;;           By: Matthew L. Fidler
-;;     Update #: 156
+;;     Update #: 161
 ;; URL: 
 ;; Keywords: 
 ;; Compatibility:    
@@ -25,6 +25,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 ;;; Change log:
+;; 21-Feb-2012    Matthew L. Fidler  
+;;    Last-Updated: Tue Feb 21 11:15:02 2012 (-0600) #160 (Matthew L. Fidler)
+;;    Bug fix for opening files.
 ;; 21-Feb-2012      
 ;;    Last-Updated: Tue Dec 13 08:41:29 2011 (-0600) #156 (Matthew L. Fidler)
 ;;    Bug fix.
@@ -92,11 +95,12 @@
 ;;;###autoload
 (defun org-outlook-open (id)
   "Open the Outlook item identified by ID.  ID should be an Outlook GUID."
-                                        ; Change this to work with Outlook 2007 without changing the
-                                        ; registry.
+  ;; Change this to work with Outlook 2007 without changing the
+  ;; registry.
   (setq debug-on-error 't)
   (if (and org-outlook-location (file-exists-p org-outlook-location))
-      (shell-command (concat "\"" org-outlook-location "\" /select \"outlook:" id "\"&"))
+      (w32-shell-execute "open" org-outlook-location
+                         (concat "/select \"outlook:" id "\""))
     (w32-shell-execute "open" (concat "outlook:" id))))
 
 ;;;###autoload
