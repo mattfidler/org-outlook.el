@@ -6,11 +6,11 @@
 ;; Maintainer:
 ;; Created: Mon May 10 09:44:59 2010 (-0500)
 ;; Version: 0.3
-;; Last-Updated: Mon May  7 09:23:52 2012 (-0500)
+;; Last-Updated: Tue May 29 22:21:06 2012 (-0500)
 ;;           By: Matthew L. Fidler
-;;     Update #: 162
-;; URL: 
-;; Keywords: 
+;;     Update #: 166
+;; URL: https://github.com/mlf176f2/org-outlook.el
+;; Keywords: Org-outlook 
 ;; Compatibility:
 ;; 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -25,6 +25,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 ;;; Change log:
+;; 26-May-2012    Matthew L. Fidler  
+;;    Last-Updated: Sat May 26 11:13:22 2012 (-0500) #163 (Matthew L. Fidler)
+;;    Added (require 'cl), Thanks Robert Pluim
 ;; 21-Feb-2012    Matthew L. Fidler  
 ;;    Last-Updated: Tue Feb 21 11:15:02 2012 (-0600) #160 (Matthew L. Fidler)
 ;;    Bug fix for opening files.
@@ -68,7 +71,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 ;;; Code:
-
+(require 'cl)
 (require 'org)
 (require 'org-protocol)
 
