@@ -1,0 +1,5 @@
+(:name org-outlook
+ :description "org-outlook"
+ :website "https://github.com/mlf176f2/org-outlook.el"
+ :type git
+ :url "https://github.com/mlf176f2/org-outlook.el.git")
