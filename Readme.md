@@ -8,7 +8,7 @@ Description:
 - __Author__ --  Matthew L. Fidler
 Maintainer:
 - __Created__ --  Mon May 10 09:44:59 2010 (-0500)
-- __Version__ --  0.9
+- __Version__ --  0.10
 - __Last-Updated__ --  Tue May 29 22:21:06 2012 (-0500)
 - __By__ --  Matthew L. Fidler
 - __Update #__ --  166
@@ -53,6 +53,7 @@ The visual basic script for outlook can be created by calling `M-x org-outlook-c
 
 ## History
 
+- __24-Jun-2014__ --   Bugfix for Drag and Drop Support (Matthew L. Fidler)
 - __24-Jun-2014__ --   Add Drag and drop support for tasks (Matthew L. Fidler)
 - __12-Dec-2012__ --   Updated Visual Basic Script to be more robust, and have more options. (Matthew L. Fidler)
 - __07-Dec-2012__ --   Should fix Issue #1. Also added org-outlook-create-vbs to create the VBS code based on a user's setup. (Matthew L. Fidler)
