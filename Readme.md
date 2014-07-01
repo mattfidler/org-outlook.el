@@ -8,7 +8,7 @@ Description:
 - __Author__ --  Matthew L. Fidler
 Maintainer:
 - __Created__ --  Mon May 10 09:44:59 2010 (-0500)
-- __Version__ --  0.10
+- __Version__ --  0.11
 - __Last-Updated__ --  Tue May 29 22:21:06 2012 (-0500)
 - __By__ --  Matthew L. Fidler
 - __Update #__ --  166
@@ -30,7 +30,18 @@ use Microsoft Outlook.  org-outlook.el allows:
   - If your organization has blocked all macro access OR you want to
     have an action for a saved `.msg` email, org-outlook also adds
     drag and drop support allowing `.msg` files to become org tasks.
-    This is enabled by default, but can be disabled by `org-outlook-no-dnd`
+    This is enabled by default, but can be disabled by
+    `org-outlook-no-dnd`
+
+  - With blocked emails, you may wish to delete the emails in a folder
+    after the task is completed.  This can be accomplished with
+    `org-protocol-delete-msgs`.  If you use it frequently, you may
+    wish to bind it to a key, like
+
+
+  (define-key org-mode-map (kbd "C-c d") 'org-protocol-delete-msgs)
+
+
 
 - Open Outlook Links in org-mode
 
@@ -53,6 +64,9 @@ The visual basic script for outlook can be created by calling `M-x org-outlook-c
 
 ## History
 
+1-Jul-2014    Matthew L. Fidler  
+   Last-Updated: Tue May 29 22:21:06 2012 (-0500) #166 (Matthew L. Fidler)
+   Add delete msg files support
 - __24-Jun-2014__ --   Bugfix for Drag and Drop Support (Matthew L. Fidler)
 - __24-Jun-2014__ --   Add Drag and drop support for tasks (Matthew L. Fidler)
 - __12-Dec-2012__ --   Updated Visual Basic Script to be more robust, and have more options. (Matthew L. Fidler)
