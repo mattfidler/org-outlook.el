@@ -452,7 +452,7 @@ Placeholders Replacement
     (setq dnd-protocol-alist (reverse new-dnd))))
 
 ;;;###autoload
-(org-outlook-enable-msg-dnd)
+;;(org-outlook-enable-msg-dnd)
 
 ;; Delete msg files for the task.
 
