@@ -475,7 +475,7 @@ Placeholders Replacement
 CAPTURE-FUNC is either the symbol `org-remember' or `org-capture'."
   (let* ((parts (org-protocol-split-data info t))
          (template (or (and (= 1 (length (car parts))) (pop parts))
-                       org-outlook-protocol-default-template-key))
+                       org-protocol-outlook-default-template-key))
          (url (concat "outlook:" (org-protocol-sanitize-uri (car parts))))
          (type (if (string-match "^\\([a-z]+\\):" url)
                    (match-string 1 url)))
