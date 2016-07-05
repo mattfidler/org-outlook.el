@@ -451,8 +451,7 @@ Placeholders Replacement
         (push new-dnd dnd)))
     (setq dnd-protocol-alist (reverse new-dnd))))
 
-;;;###autoload
-;;(org-outlook-enable-msg-dnd)
+(org-outlook-enable-msg-dnd)
 
 ;; Delete msg files for the task.
 
@@ -468,6 +467,38 @@ Placeholders Replacement
           (let ((file (org-link-unescape (match-string 1))))
             (when (file-exists-p file)
               (delete-file file))))))))
+
+(defcustom org-protocol-delete-msgs-states '("DONE" "CANCELED")
+  "States where org-protocol may delete messages (upon prompt)."
+  :type '(repeat (string :tag "State:" ))
+  :group 'org-outlook)
+
+(defcustom org-protocol-delete-msgs-on-task-done t
+  "Determine if outlook messages should be deleted upon task completion.
+
+The messages will be deleted are specified in `org-protocol-delete-msgs-states'."
+  :type 'boolean
+  :group 'org-outlook)
+
+(defun org-protocol-delete-msgs-on-task-done ()
+  "Delete messages in task when the task has been completed."
+  (when (and org-protocol-delete-msgs-on-task-done (string-match-p (regexp-opt org-protocol-delete-msgs-states) org-state))
+    (save-restriction
+      (save-excursion
+        (catch 'dont-delete
+          (let (prompt)
+            (org-narrow-to-subtree)
+            (goto-char (point-min))
+            (while (re-search-forward org-bracket-link-regexp nil t)
+              (let ((file (org-link-unescape (match-string 1))))
+                (when (file-exists-p file)
+                  (unless prompt
+		    (if (y-or-n-p "Do you want to delete all outlook .msg files in this task?")
+			(setq prompt t)
+		      (throw 'dont-delete nil)))
+                  (delete-file file))))))))))
+
+(add-hook 'org-after-todo-state-change-hook 'org-protocol-delete-msgs-on-task-done)
 
 ;;;###autoload
 (defun org-protocol-do-outlook-capture (info capture-func)
